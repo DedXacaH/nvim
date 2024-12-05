@@ -19,10 +19,6 @@ vim.keymap.set('i', 'jj', '<ESC>', {noremap = true, silent = true})
 -- Show help
 vim.keymap.set('n', '<leader>w', ':W<CR>', {})
 
--- Buffers cycle
-vim.keymap.set('n', '<leader>bn', ':BufferLineCycleNext<CR>', {})
-vim.keymap.set('n', '<leader>bp', ':BufferLineCyclePrev<CR>', {})
-
 -- Buffer close
 vim.keymap.set('n', '<leader>bc', ':bd<CR>', {})
 
@@ -31,10 +27,6 @@ vim.keymap.set('n', '<leader>cs', ':Cheatsheet<CR>', {})
 
 -- Disabling highlights after search
 vim.keymap.set('n', '<leader>h', ':noh<CR>', {})
-
--- Moving between opened buffers
-vim.keymap.set('n', 'J', ':BufferLineCycleNext<CR>', {noremap = true, silent = true})
-vim.keymap.set('n', 'K', ':BufferLineCyclePrev<CR>', {noremap = true, silent = true})
 
 -- Moving between opened windows
 vim.keymap.set('n', '<leader>wk', '<C-w>k', {noremap = true, silent = true}) -- Up
@@ -45,5 +37,12 @@ vim.keymap.set('n', '<leader>wl', '<C-w>l', {noremap = true, silent = true}) -- 
 -- Show Calendar window
 vim.keymap.set('n', '<leader>cal', ':CalendarVR<CR>', {noremap = true, silent = true})
 
--- Set up some keymaps for flutter-tools
-vim.keymap.set('n', '<leader>fo', ':FlutterOutlineToggle<CR>', {noremap = true, silent = true}) 
+vim.keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
+vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
+vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
+vim.keymap.set("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
+vim.keymap.set("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
+vim.keymap.set("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
+vim.keymap.set("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
+vim.keymap.set("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
+vim.keymap.set("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })

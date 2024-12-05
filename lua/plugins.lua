@@ -42,30 +42,63 @@ require('lazy').setup({
 	'nvim-lualine/lualine.nvim',
 	-- Tagbar
 	'preservim/tagbar',
-	-- Bufferline
-	'akinsho/bufferline.nvim',
 	-- LSP config
-	'neovim/nvim-lspconfig',
+	{
+		'neovim/nvim-lspconfig',
+		config = function()
+			require "lsp"
+		end,
+	},
 	-- LSP installer
 	'williamboman/nvim-lsp-installer',
 	-- Code completion
-	'hrsh7th/nvim-cmp',
-	-- Addon for cmp to lsp
-	'hrsh7th/cmp-nvim-lsp',
-	-- Addon for cmp to search in buffer
-	'hrsh7th/cmp-buffer',
-	-- Addon for cmp to cmplete path
-	'hrsh7th/cmp-path',
+	{
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      {
+        -- snippet plugin
+        "L3MON4D3/LuaSnip",
+        dependencies = "rafamadriz/friendly-snippets",
+        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+        config = function(_, opts)
+          require("luasnip").config.set_config(opts)
+          require "configs.luasnip"
+        end,
+      },
+
+      -- autopairing of (){}[] etc
+      {
+        "windwp/nvim-autopairs",
+        opts = {
+          fast_wrap = {},
+          disable_filetype = { "TelescopePrompt", "vim" },
+        },
+        config = function(_, opts)
+          require("nvim-autopairs").setup(opts)
+        end,
+      },
+
+      -- cmp sources plugins
+      {
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+      },
+    },
+    opts = function()
+      return require "configs.cmp"
+    end,
+  },
 	-- Autoclose brackets
 	'tpope/vim-surround',
 	-- How many search patterns found
 	'google/vim-searchindex',
 	-- Mason - classic
 	'williamboman/mason.nvim',
-	-- Addon for cmp to complete cmd
-	'hrsh7th/cmp-cmdline',
-	-- Addon for cmp to complete with lsp help
-	'saadparwaiz1/cmp_luasnip',
 	-- Snippets
 	'L3MON4D3/LuaSnip',
 	-- Window picker for NeoTree
@@ -133,17 +166,10 @@ require('lazy').setup({
 	},
 	-- Mason lsp configuration
 	'williamboman/mason-lspconfig.nvim',
-	-- Markdown previewer in browser
-	{
-		'iamcco/markdown-preview.nvim',
-		build = function() vim.fn['#mkdp#util#install']() end,
-	},
 	-- Telescope addon for mardown-preview
 	'nvim-telescope/telescope-bibtex.nvim',
 	-- Calendar window
 	'renerocksai/calendar-vim',
-	-- Addon for zettelkasten method
-	'renerocksai/telekasten.nvim',
 	-- Telescope addon for see media files like pictures in telescope
 	'nvim-telescope/telescope-media-files.nvim',
 	-- Terminal in floating window or any side
@@ -152,17 +178,6 @@ require('lazy').setup({
 		version = '*',
 		config = true,
 	},
-	-- Flutter tools for flutter support
-	{
-		'akinsho/flutter-tools.nvim',
-		lazy = false,
-		dependencies = {
-			'nvim-lua/plenary.nvim',
-			'stevearc/dressing.nvim'
-		},
-		config = true
-	},
-	'lukas-reineke/indent-blankline.nvim',
 	{
     'mikesmithgh/kitty-scrollback.nvim',
     enabled = true,
@@ -224,12 +239,48 @@ require('lazy').setup({
   },
 	{
 		'mrjones2014/legendary.nvim',
-		-- since legendary.nvim handles all your keymaps/commands,
-		-- its recommended to load legendary.nvim before other plugins
 		priority = 10000,
 		lazy = false,
 		-- sqlite is only needed if you want to use frecency sorting
 		-- dependencies = { 'kkharji/sqlite.lua' }
 	},
 	'NeverI/symfony.nvim',
+	{
+    "prettier/vim-prettier",
+    build = {
+      "yarn install --frozen-lockfile --production",
+    },
+    branch = "release/0.x",
+    cmd = { "Prettier", "PrettierAsync", "PrettierCli", "PrettierCliPath", "PrettierCliVersion", "PrettierVersion" },
+  },
+  {
+    "sbdchd/neoformat",
+    cmd = { "Neoformat" },
+    config = function()
+      vim.cmd [[
+      let g:neoformat_enabled_yaml = ['prettier']
+      let g:neoformat_enabled_js = ['prettier']
+      let g:neoformat_enabled_twig = ['prettier']
+        ]]
+    end,
+  },
+	{
+    "rhysd/vim-clang-format",
+    ft = { "cpp", "c", "h" },
+    init = function()
+      vim.cmd [[let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11",
+            \ "BreakBeforeBraces" : "Stroustrup"}]]
+    end,
+  },
+	{
+		'lukas-reineke/indent-blankline.nvim',
+		main = 'ibl',
+		---@module 'ibl'
+		---@type ibl.config
+		opts = {},
+	}
 })

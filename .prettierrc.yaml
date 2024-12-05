@@ -1,0 +1,21 @@
+overrides:
+  - files: "*.js"
+    options:
+      printWidth: 160
+      tabWidth: 4
+      useTabs: false
+      arrowParens: avoid
+  - files:
+      - "*.yaml"
+      - "*.yml"
+    options:
+      printWidth: 1024
+      tabWidth: 2
+      useTabs: false
+  - files:
+      - "*.json"
+    options:
+      printWidth: 1024
+      tabWidth: 2
+      useTabs: false
+

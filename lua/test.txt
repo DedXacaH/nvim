@@ -1,0 +1,47 @@
+[?1049h[?1h[H[2J[?2004h[?2026$p[?u[c[?12h[?25h[?25l(B[m[H[2J[?1004h[?12h[?25h[?25l[23B[38:2:242:244:248m[48:2:22:22:22mError detected while processing /home/dedxacah/.config/nvim/init.lua:           [H[23M
+E5113: Error while calling lua chunk: /home/dedxacah/.config/nvim/lua/settings.l
+ua:224: module 'vim-prettier' not found:                                        
+        no field package.preload['vim-prettier']                                
+cache_loader: module vim-prettier not found                                     
+cache_loader_lib: module vim-prettier not found                                 
+        no file './vim-prettier.lua'                                            
+        no file '/usr/share/luajit-2.1/vim-prettier.lua'                        
+        no file '/usr/local/share/lua/5.1/vim-prettier.lua'                     
+        no file '/usr/local/share/lua/5.1/vim-prettier/init.lua'                
+        no file '/usr/share/lua/5.1/vim-prettier.lua'                           
+        no file '/usr/share/lua/5.1/vim-prettier/init.lua'                      
+        no file '/home/dedxacah/.local/share/nvim/lazy-rocks/telescope.nvim/shar
+e/lua/5.1/vim-prettier.lua'                                                     
+        no file '/home/dedxacah/.local/share/nvim/lazy-rocks/telescope.nvim/shar
+e/lua/5.1/vim-prettier/init.lua'                                                
+        no file '/home/dedxacah/.local/share/nvim/lazy-rocks/neorg/share/lua/5.1
+/vim-prettier.lua'                                                              
+        no file '/home/dedxacah/.local/share/nvim/lazy-rocks/neorg/share/lua/5.1
+/vim-prettier/init.lua'                                                         
+        no file '/home/dedxacah/.local/share/nvim/lazy-rocks/pathlib.nvim/share/
+lua/5.1/vim-prettier.lua'                                                       
+        no file '/home/dedxacah/.local/share/nvim/lazy-rocks/pathlib.nvim/share/
+-- More --                                                                      ]112[1 q[HError detected while processing /home/dedxacah/.config/nvim/init.lua:           
+E5113: Error while calling lua chunk: /home/dedxacah/.config/nvim/lua/settings.l
+ua:224: module 'vim-prettier' not found:                                        
+        no field package.preload['vim-prettier']                                
+cache_loader: module vim-prettier not found                                     
+cache_loader_lib: module vim-prettier not found                                 
+        no file './vim-prettier.lua'                                            
+        no file '/usr/share/luajit-2.1/vim-prettier.lua'                        
+        no file '/usr/local/share/lua/5.1/vim-prettier.lua'                     
+        no file '/usr/local/share/lua/5.1/vim-prettier/init.lua'                
+        no file '/usr/share/lua/5.1/vim-prettier.lua'                           
+        no file '/usr/share/lua/5.1/vim-prettier/init.lua'                      
+        no file '/home/dedxacah/.local/share/nvim/lazy-rocks/telescope.nvim/shar
+e/lua/5.1/vim-prettier.lua'                                                     
+        no file '/home/dedxacah/.local/share/nvim/lazy-rocks/telescope.nvim/shar
+e/lua/5.1/vim-prettier/init.lua'                                                
+        no file '/home/dedxacah/.local/share/nvim/lazy-rocks/neorg/share/lua/5.1
+/vim-prettier.lua'                                                              
+        no file '/home/dedxacah/.local/share/nvim/lazy-rocks/neorg/share/lua/5.1
+/vim-prettier/init.lua'                                                         
+        no file '/home/dedxacah/.local/share/nvim/lazy-rocks/pathlib.nvim/share/
+lua/5.1/vim-prettier.lua'                                                       
+        no file '/home/dedxacah/.local/share/nvim/lazy-rocks/pathlib.nvim/share/
+-- More --                                                                      [24;11H[?12h[?25h

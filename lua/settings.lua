@@ -2,7 +2,7 @@
 -- NeoVim standard options:
 
 -- color column at 80 column
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = '120'
 -- 24-bit colors
 vim.opt.termguicolors = true
 -- number column
@@ -141,9 +141,8 @@ require('neo-tree').setup({
 	}
 })
 
--- Set up lualine, bufferline, mason, mason-lspconfig, Comment
+-- Set up lualine, mason, mason-lspconfig, Comment
 require('lualine').setup()
-require('bufferline').setup()
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('Comment').setup()
@@ -211,65 +210,8 @@ require('nvim-autopairs').setup({
 	disable_filetype = { 'TelescopePrompt', 'vim' }
 })
 
--- Set up cmp
-local cmp = require('cmp')
-cmp.setup({
-	snippet = {
-		expand = function(args)
-		  require('luasnip').lsp_expand(args.body)
-		end,
-	},
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
-	},
-	mapping = cmp.mapping.preset.insert({
-		['<C-b>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<C-e>'] = cmp.mapping.abort(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }),
-	}),
-	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' },
-	}, {
-		{ name = 'buffer' },
-	})
-})
-
--- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-	sources = cmp.config.sources({
-		{ name = 'git' },
-	}, {
-		{ name = 'buffer' },
-	})
-})
-
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-		{ name = 'buffer' }
-	}
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = 'path' }
-	}, {
-		{ name = 'cmdline' }
-	})
-})
-
--- Set up telekasten
-require('telekasten').setup({
-	home = vim.fn.expand('~/zettelkasten'),
-})
-
+-- Set up notifications
+require("notify").setup()
 -- Set up telescope addon 'media_files'
 require('telescope').load_extension('media_files')
 -- Set up toggleterm
@@ -279,5 +221,4 @@ require('toggleterm').setup({
 	direction = 'float'
 })
 
--- Set up flutter-tools.nvim
-require('flutter-tools').setup()
+require("ibl").setup()
