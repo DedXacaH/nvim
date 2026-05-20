@@ -1,5 +1,5 @@
 local on_attach = require("configs/lspconf").on_attach
-local capagilities = require("configs/lspconf").capagilities
+local capabilities = require("configs/lspconf").capabilities
 
 local lspconfig = require "lspconfig"
 local servers = { "html", "clangd", "phpactor", "ts_ls", "lua_ls", "twiggy_language_server" }
